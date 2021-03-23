@@ -1,4 +1,9 @@
 Resources.txt Lab08
 
 1. https://www.tutorialspoint.com/How-to-find-difference-between-2-files-in-Python
+<<<<<<< HEAD
 2. https://www.newbedev.com/python/howto/how-to-iterate-over-files-in-a-given-directory/
+=======
+2. https://www.guru99.com/reading-and-writing-files-in-python.html  #for properly appending
+3. https://realpython.com/python-csv/   #for proper way to parse and append to csv file
+>>>>>>> 72d81949fa337e9f326ca383ed7d80e09682ddbf
