@@ -22,14 +22,11 @@ def csv_parser(list):
     fileOpen = "/tmp/hash0.csv"
     if path.exists(fileOpen) is True:
         fileOpen = "/tmp/hash1.csv"
-    csv_file = open(fileOpen,"a+")
-    filepath = list[0]
-    date = list[1]
-    hashstring = list[2]
-    
-    csv_line = filepath + ',' + date + ',' + hashstring
-    csv_file.write(csv_line)
-    csv_file.close()
+  
+    with open(fileOpen, 'a+') as csv_file:
+        csvwriter = csv.writer(csv_file)
+        csvwriter.writerow(list)
+        csv_file.close()
     return
 
 
