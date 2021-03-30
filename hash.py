@@ -62,10 +62,37 @@ def baseline():
 def compHashFiles():
     initFile = "hash0.csv"
     recFile = "hash1.csv"
-    updateList, newList = carlosFunction(initFile, recFile)
+
+    oldDict = {}
+    newDict = {}
+    with open(initFile, "r+") as finit:
+        for init in finit.readlines():
+            oldDict[init[0]] = init[1]
+    finit.close()
+
+    with open(initFile, "r+") as frec:
+        for rec in frec.readlines():
+            newDict[rec[0]] = rec[1]
+    frec.close()
+
+    oldFilePaths = oldDict.keys() #list of keys
+    newFilePaths = newDict.keys() #list of keys
+
+    updateList = []
+    newList = []
+
+    for key in newFilePaths:
+        if key not in oldFilePaths:
+            newList.append({key,newDict[key]})
+        else:
+            if oldDict[key] == newDict[key]:
+                continue
+            else:
+                updateList.append({key,newDict[key]})
 
     if ((len(updateList) and (newList)) == 0):
         print("NO FILE CHANGES")
+        return
 
     print("UPDATED FILES") 
     for upDict in updateList:
@@ -86,7 +113,7 @@ def main():
         compHashFiles()
     else:
         baseline()
-                    
+        
     return
 
 
