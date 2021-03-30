@@ -60,13 +60,13 @@ def compHashFiles():
     with open(initFile, "r+") as finit:
         for init in finit.readlines():
             line = init.split(',')
-            oldDict[line[0]] = line[2]
+            oldDict[line[0]] = line[2] #filepath hash
     finit.close()
 
     with open(recFile, "r+") as frec:
         for rec in frec.readlines():
             lline = rec.split(',')
-            newDict[lline[0]] = lline[2]
+            newDict[lline[0]] = lline[2] #filepath hash
     frec.close()
 
     oldFilePaths = oldDict.keys() #list of keys
@@ -77,27 +77,25 @@ def compHashFiles():
 
     for key in newFilePaths:
         if key not in oldFilePaths:
-            print(key, newDict[key])
-            # newList.append(dict({key,newDict[key]}))
-            newList
+            newList.append((key, newDict[key]))
         else:
             if oldDict[key] == newDict[key]:
                 continue
             else:
-                # updateList.append(dict({key,oldDict[key]}))
+                updateList.append((key, oldDict[key])) # why is it file path and TIME????
 
     if ((len(updateList) and len(newList)) == 0):
         print("NO FILE CHANGES")
         return
 
     print("UPDATED FILES") 
-    for upDict in updateList:
-        print("{:5} {:5}".format(upDict.keys(), upDict.values()))
+    for upTup in updateList:
+        print("{:5} {:5}".format(upTup[0], upTup[1]))
 
     print("-----------------------------------------------------------")
     print("NEW FILES") 
-    for newDict in newList:
-        print("{:5} {:5}".format(newDict.keys(), newDict.values()))
+    for newTup in newList:
+        print("{:5} {:5}".format(newTup[0], newTup[1]))
 
     return
 
