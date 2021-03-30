@@ -38,11 +38,12 @@ def main():
     for subdir, dirs, files in os.walk(r'/'):
         for filename in files:
             filepath = subdir + os.sep + filename
+            
             hash = hashlib.sha256()
-            hash.update()
-            #get hash
-            #get time
-
+            hash.update(filepath.encode())
+            hashStr = hash.hexdigest())
+            hashtime = datetime.datetime.now()
+            hashList = [filepath, hashtime, hashStr]
 
     return
 
