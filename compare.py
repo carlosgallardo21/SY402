@@ -3,7 +3,7 @@
 oldDict = {
   "path1": "hash1",
   "path2": "hash2",
-  "path3": "hash3"#!/usr/bin/python
+  "path3": "hash3"
 
 }
 
