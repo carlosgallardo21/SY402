@@ -37,7 +37,7 @@ def csv_parser(list):
     date = list[1]
     hashstring = list[2]
     
-    csv_line = hashstring + ',' + date + ',' + filepath
+    csv_line = filepath + ',' + date + ',' + hashstring
     csv_file.write(csv_line)
     csv_file.close()
     return
