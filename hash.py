@@ -90,7 +90,7 @@ def compHashFiles():
             else:
                 updateList.append({key,newDict[key]})
 
-    if ((len(updateList) and (newList)) == 0):
+    if ((len(updateList) and len(newList)) == 0):
         print("NO FILE CHANGES")
         return
 
