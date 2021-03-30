@@ -18,11 +18,13 @@ from os import path
 '''Breakdown'''
 
 
-def csv_parser(list):
-    fileOpen = "hash0.csv"
-    if path.exists(fileOpen) is True:
+def csv_parser(inFlag, list):
+    fileOpen = ""
+    if inFlag == 0:
+        fileOpen = "hash0.csv"
+    else:
         fileOpen = "hash1.csv"
-  
+
     with open(fileOpen, 'a+') as csv_file:
         csvwriter = csv.writer(csv_file)
         csvwriter.writerow(list)
@@ -30,7 +32,7 @@ def csv_parser(list):
     return
 
 
-def hashFunction():
+def hashFunction(flag):
     excludeDir = ['/dev', '/proc', '/run', '/sys', '/tmp', '/var/lib', '/var/run']
 
     for subdir, dirs, files in os.walk(r'/'):
@@ -47,12 +49,12 @@ def hashFunction():
             hashtime = str(datetime.datetime.now())
             
             hashList = [filepath, hashtime, hashStr]
-            csv_parser(hashList)
+            csv_parser(flag, hashList)
     return
 
 
 def baseline():
-    hashFunction()
+    hashFunction(0)
     return
 
 
@@ -60,17 +62,29 @@ def baseline():
 def compHashFiles():
     initFile = "hash0.csv"
     recFile = "hash1.csv"
-    ...
+    updateList, newList = carlosFunction(initFile, recFile)
+
+    if ((len(updateList) and (newList)) == 0):
+        print("NO FILE CHANGES")
+
+    print("UPDATED FILES") 
+    for upDict in updateList:
+        print("{:5} {:5}".format(upDict.keys(), upDict.values()))
+
+    print("-----------------------------------------------------------")
+    print("NEW FILES") 
+    for newDict in newList:
+        print("{:5} {:5}".format(newDict.keys(), newDict.values()))
+
     return
 
 
 
 def main():
-    if path.exists("hash0.csv") is True:
-        hashFunction()
+    if path.exists("hash0.csv"):
+        hashFunction(1)
         compHashFiles()
     else:
-        print("HELLO")
         baseline()
                     
     return
