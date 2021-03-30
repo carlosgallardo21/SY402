@@ -34,8 +34,9 @@ def compHashFiles(initFile, recFile):
 def csv_parser(list):
     csv_file = open("hash.csv","a+")
     filepath = list[0]
-    hashstring = list[1]
-    date = list[2]
+    date = list[1]
+    hashstring = list[2]
+    
     csv_line = filepath + ',' + hashstring + ',' + date
     csv_file.write(csv_line)
     csv_file.close()
