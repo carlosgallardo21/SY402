@@ -7,11 +7,10 @@ def main():
 
 def csv_parser(list):
     csv_file = open("hash.csv","wa+")
-    filename = list[0]
-    filepath = list[1]
-    hash = list[2]
-    date = list[3]
-    csv_line = filename + ',' + filepath + ',' + hash + ',' + date
+    filepath = list[0]
+    hashstring = list[1]
+    date = list[2]
+    csv_line = filepath + ',' + hashstring + ',' + date
     csv_file.write(csv_line)
     csv_file.close()
 
