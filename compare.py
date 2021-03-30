@@ -1,5 +1,12 @@
 #!/usr/bin/python
 
+oldDict = {
+  "path1": "hash1",
+  "path2": "hash2",
+  "path3": "hash3"#!/usr/bin/python
+
+}
+
 newDict = {
   "path1": "has1",
   "path2": "has2",
