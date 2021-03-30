@@ -19,9 +19,9 @@ from os import path
 
 
 def csv_parser(list):
-    fileOpen = "/tmp/hash0.csv"
+    fileOpen = "hash0.csv"
     if path.exists(fileOpen) is True:
-        fileOpen = "/tmp/hash1.csv"
+        fileOpen = "hash1.csv"
   
     with open(fileOpen, 'a+') as csv_file:
         csvwriter = csv.writer(csv_file)
@@ -57,25 +57,20 @@ def baseline():
 
 
 # Take initial hash file and compare to the new file
-def compHashFiles(initFile, recFile):
-    initFile = "/tmp/hash0.csv"
-    recFile = "/tmp/hash1.csv"
-    fd1 = open(initFile, 'r')
-    fd2 = open(recFile, 'r')
-
-    # Find difference
-    for line in difflib.unified_diff(fd1.read(), fd2.read(), fromfile='initFile', tofile='recFile', lineterm=''):
-        print(line)
-    
+def compHashFiles():
+    initFile = "hash0.csv"
+    recFile = "hash1.csv"
+    ...
     return
 
 
 
 def main():
-    if path.exists("/tmp/hash0.csv") is True:
+    if path.exists("hash0.csv") is True:
         hashFunction()
         compHashFiles()
     else:
+        print("HELLO")
         baseline()
                     
     return
